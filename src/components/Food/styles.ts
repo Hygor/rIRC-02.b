@@ -1,16 +1,27 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  available: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   background: #f0f0f5;
-  border-radius: 8px;
+  border-radius: 1.6rem;
+  display: flex;
+  flex-basis: flex-grow;
+  flex-direction: column;
+  position: relative;
 
   header {
-    background: #ffb84d;
-    border-radius: 8px 8px 0px 0px;
-    height: 192px;
+    background: #181818;
+    border-radius: 1.6rem 1.6rem 0px 0px;
+    height: 16rem;
     overflow: hidden;
     transition: 0.3s opacity;
     text-align: center;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
 
     ${props =>
     !props.available &&
@@ -19,6 +30,9 @@ export const Container = styled.div`
       `};
 
     img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
       pointer-events: none;
       user-select: none;
     }
@@ -26,6 +40,10 @@ export const Container = styled.div`
 
   section.body {
     padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     h2 {
       color: #3d3d4d;
@@ -33,8 +51,11 @@ export const Container = styled.div`
 
     p {
       color: #3d3d4d;
-
       margin-top: 16px;
+    }
+
+    .desc {
+      flex-grow: 1;
     }
 
     .price {
@@ -49,39 +70,55 @@ export const Container = styled.div`
     }
   }
 
-  section.footer {
+  .icon-container {
     display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-in-out;
+
+    button {
+      background: #fff;
+      padding: 10px;
+      border-radius: 1.6rem;
+      display: flex;
+      border: none;
+      transition: 0.1s;
+
+      svg {
+        color: #3d3d4d;
+      }
+
+      & + button {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  &:hover, &:focus, &:active {
+    .icon-container {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  section.footer {
+    display: block;
     justify-content: space-between;
     align-items: center;
 
     padding: 20px 30px;
     background: #e4e4eb;
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 0px 0px 1.6rem 1.6rem;
 
-    div.icon-container {
-      display: flex;
-
-      button {
-        background: #fff;
-        padding: 10px;
-        border-radius: 8px;
-        display: flex;
-        border: none;
-        transition: 0.1s;
-
-        svg {
-          color: #3d3d4d;
-        }
-
-        & + button {
-          margin-left: 6px;
-        }
-      }
-    }
 
     div.availability-container {
       display: flex;
       align-items: center;
+      width: 100%;
 
       p {
         color: #3d3d4d;
@@ -92,7 +129,7 @@ export const Container = styled.div`
         display: inline-block;
         width: 88px;
         height: 32px;
-        margin-left: 12px;
+        margin-left: auto;
 
         & input {
           opacity: 0;
