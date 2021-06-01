@@ -54,12 +54,12 @@ export function Food({food, handleDelete, handleEditFood}: FoodProps) {
         <h2>{food.name}</h2>
         <p className="desc">{food.description}</p>
         <p className="price">
-          R$ <b>{food.price}</b>
+          € <b>{food.price}</b>
         </p>
       </section>
       <section className="footer">
         <div className="availability-container">
-          <p>{isAvailable ? 'Disponível' : 'Indisponível'}</p>
+          <p>{isAvailable ? 'Available' : 'Unavailable'}</p>
 
           <label htmlFor={`available-switch-${food.id}`} className="switch">
             <input
