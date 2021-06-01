@@ -7,7 +7,6 @@ import {
 } from "react";
 
 import { api } from '../services/api';
-import { useModal } from "./useModal";
 
 export type FoodType = {
   id: number;

@@ -1,5 +1,5 @@
 import { useModal } from '../../hooks/useModal';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import ReactModal from 'react-modal';
 
 interface ModalProps {
